@@ -6,7 +6,7 @@ metadata:
   namespace: helloworld
 spec:
   rules:
-    - host: agnostic.nginx.example.com
+    - host: hello.agnostic.example.com
       http:
         paths:
           - path: /
