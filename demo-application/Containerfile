@@ -1,0 +1,12 @@
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.4 as builder
+WORKDIR /app
+COPY hello-world .
+RUN microdnf -y install cargo \
+ && cargo install --path .
+
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.4
+COPY --from=builder /root/.cargo/bin/hello-world /usr/local/bin/hello-world
+USER 1001
+ENV ROCKET_ADDRESS=0.0.0.0
+EXPOSE 8000
+CMD ["hello-world"]
