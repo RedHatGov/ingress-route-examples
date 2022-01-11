@@ -120,7 +120,10 @@ oc get deploy -n ingress-nginx -w
 ```
 
 `NAME                       READY   UP-TO-DATE   AVAILABLE   AGE`\
-`ingress-nginx-controller   1/1     1            1           8m`
+`ingress-nginx-controller   0/1     1            0           10s`\
+`ingress-nginx-controller   1/1     1            1           30s`
+
+You can `Ctrl + C` to cancel the watch once the controller shows ready.
 
 ### Leveraging the upstream Ingress controller
 
@@ -142,6 +145,14 @@ curl http://${ingress_nlb}
 ```
 
 `Hello, world, from hello-world-56cd647dcf-s8g9w!`
+
+If you get some error from `curl` about being unable to resolve the host, it's because the NLB was provisioned so recently that the DNS records haven't propogated just yet. Keep trying until your old DNS cache expires and a new lookup succeeds (which may take a few minutes). It might be helpful to run something like the following:
+
+```sh
+while ! curl -s --connect-timeout 5 http://${ingress_nlb}; do sleep 5; done
+```
+
+In the end, once the cloud finishes moving around to meet your requests, you'll get the right output.
 
 In the previous example, we demonstrated a simple application and showed traffic routing to it via an OpenShift Route. Here we demonstrated the installation of an extra Kubernetes Ingress controller, in this case Nginx, and made use of that controller to direct traffic into the same demo application. The original OpenShift Route could safely be deleted in this case, leaving the Nginx Ingress path available to route traffic, thus demonstrating the flexibility and choice that comes into play by leveraging both Routes and Ingress objects to achieve the same result.
 
