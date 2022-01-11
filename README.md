@@ -6,6 +6,8 @@ This small collection of kubernetes manifests is designed to demonstrate the pra
 
 These deliberately simplified examples are designed to show the difference between behaviors when using different manifest definitions with different IngressControllers. They are not designed to express an opinion about any production implementations on your own clusters for your own applications - you should use the things that make the most sense for you. Hopefully we can demystify some of your choices here.
 
+Note that you will need to be a cluster-admin to install several of the things in this demo, because we have to modify Security Context Constraints in order to install an upstream ingress controller.
+
 ## Walkthrough
 
 ### Deploying our demo application
