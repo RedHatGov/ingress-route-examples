@@ -1,12 +1,16 @@
-FROM registry.access.redhat.com/ubi8/ubi-minimal:8.5 as builder
+FROM registry.access.redhat.com/ubi9/ubi-minimal:latest as builder
 WORKDIR /app
 COPY hello-world .
-RUN microdnf -y install cargo \
+RUN microdnf -y install gcc \
+ && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+  | sh -s -- --default-toolchain stable -y \
+ && source "$HOME/.cargo/env" \
  && cargo install --path .
 
-FROM registry.access.redhat.com/ubi8/ubi-minimal:8.5
+FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
 COPY --from=builder /root/.cargo/bin/hello-world /usr/local/bin/hello-world
 USER 1001
-ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_ADDRESS=0.0.0.0 \
+    ROCKET_LOG_LEVEL=normal
 EXPOSE 8000
 CMD ["hello-world"]
