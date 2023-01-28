@@ -90,28 +90,28 @@ oc apply -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/m
 Then we’ll apply the stock upstream Nginx deployment:
 
 ```sh
-oc apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/aws/deploy.yaml
+oc apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/aws/deploy.yaml
 ```
 
 `namespace/ingress-nginx unchanged`\
 `serviceaccount/ingress-nginx created`\
-`configmap/ingress-nginx-controller created`\
-`clusterrole.rbac.authorization.k8s.io/ingress-nginx created`\
-`clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx created`\
-`role.rbac.authorization.k8s.io/ingress-nginx created`\
-`rolebinding.rbac.authorization.k8s.io/ingress-nginx created`\
-`service/ingress-nginx-controller-admission created`\
-`service/ingress-nginx-controller created`\
-`deployment.apps/ingress-nginx-controller created`\
-`ingressclass.networking.k8s.io/nginx created`\
-`validatingwebhookconfiguration.admissionregistration.k8s.io/ingress-nginx-admission created`\
 `serviceaccount/ingress-nginx-admission created`\
-`clusterrole.rbac.authorization.k8s.io/ingress-nginx-admission created`\
-`clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx-admission created`\
+`role.rbac.authorization.k8s.io/ingress-nginx created`\
 `role.rbac.authorization.k8s.io/ingress-nginx-admission created`\
+`clusterrole.rbac.authorization.k8s.io/ingress-nginx created`\
+`clusterrole.rbac.authorization.k8s.io/ingress-nginx-admission created`\
+`rolebinding.rbac.authorization.k8s.io/ingress-nginx created`\
 `rolebinding.rbac.authorization.k8s.io/ingress-nginx-admission created`\
+`clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx created`\
+`clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx-admission created`\
+`configmap/ingress-nginx-controller created`\
+`service/ingress-nginx-controller created`\
+`service/ingress-nginx-controller-admission created`\
+`deployment.apps/ingress-nginx-controller created`\
 `job.batch/ingress-nginx-admission-create created`\
-`job.batch/ingress-nginx-admission-patch created`
+`job.batch/ingress-nginx-admission-patch created`\
+`ingressclass.networking.k8s.io/nginx created`\
+`validatingwebhookconfiguration.admissionregistration.k8s.io/ingress-nginx-admission created`
 
 We should be able to watch our Deployment come online and show Ready at this point:
 
