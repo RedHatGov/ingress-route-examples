@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: helloworld
-        image: quay.io/redhatgov/rust-hello-world:0.1.2
+        image: quay.io/redhatgov/rust-hello-world:0.1.3
         ports:
         - containerPort: 8000
         resources:

@@ -1,10 +1,13 @@
 FROM registry.access.redhat.com/ubi9/ubi-minimal:latest as builder
-WORKDIR /app
-COPY hello-world .
+
 RUN microdnf -y install gcc \
  && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
-  | sh -s -- --default-toolchain stable -y \
- && source "$HOME/.cargo/env" \
+  | sh -s -- --default-toolchain stable -y
+
+WORKDIR /app
+COPY hello-world .
+
+RUN source "$HOME/.cargo/env" \
  && cargo install --path .
 
 FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
