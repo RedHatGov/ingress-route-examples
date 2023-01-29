@@ -207,7 +207,7 @@ We can remove these similarly to how we deployed them all.
 ```sh
 oc delete -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/main/04-agnostic-ingress.yml
 oc delete -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/main/03-nginx-ingress.yml
-oc delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/aws/deploy.yaml --wait=false
+oc delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/aws/deploy.yaml --wait=false
 oc delete -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/main/02-nginx-ingress-scc.yml --wait=false
 oc delete -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/main/01-route.yml
 oc delete -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/main/00-demo-application.yml
