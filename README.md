@@ -245,4 +245,4 @@ oc delete -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/
 
 ## Further Reading
 
-Please see the [OpenShift Documentation](https://docs.openshift.com/container-platform/4.9/networking/configuring_ingress_cluster_traffic/overview-traffic.html) for more information on working with the provided IngressController for OpenShift, the OpenShift Router. If you have more questions about using external IngressControllers on OpenShift, see [this blog post](https://www.redhat.com/en/blog/using-nginx-ingress-controller-red-hat-openshift) as an example of using Nginx.
+Please see the [OpenShift Documentation](https://docs.openshift.com/container-platform/4.12/networking/configuring_ingress_cluster_traffic/overview-traffic.html) for more information on working with the provided IngressController for OpenShift, the OpenShift Router. If you have more questions about using external IngressControllers on OpenShift, see [this blog post](https://www.redhat.com/en/blog/using-nginx-ingress-controller-red-hat-openshift) as an example of using Nginx.
