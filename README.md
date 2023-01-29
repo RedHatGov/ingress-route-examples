@@ -90,28 +90,28 @@ oc apply -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/m
 Then we’ll apply the stock upstream Nginx deployment:
 
 ```sh
-oc apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/aws/deploy.yaml
+oc apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/aws/deploy.yaml
 ```
 
 `namespace/ingress-nginx unchanged`\
 `serviceaccount/ingress-nginx created`\
-`configmap/ingress-nginx-controller created`\
-`clusterrole.rbac.authorization.k8s.io/ingress-nginx created`\
-`clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx created`\
-`role.rbac.authorization.k8s.io/ingress-nginx created`\
-`rolebinding.rbac.authorization.k8s.io/ingress-nginx created`\
-`service/ingress-nginx-controller-admission created`\
-`service/ingress-nginx-controller created`\
-`deployment.apps/ingress-nginx-controller created`\
-`ingressclass.networking.k8s.io/nginx created`\
-`validatingwebhookconfiguration.admissionregistration.k8s.io/ingress-nginx-admission created`\
 `serviceaccount/ingress-nginx-admission created`\
-`clusterrole.rbac.authorization.k8s.io/ingress-nginx-admission created`\
-`clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx-admission created`\
+`role.rbac.authorization.k8s.io/ingress-nginx created`\
 `role.rbac.authorization.k8s.io/ingress-nginx-admission created`\
+`clusterrole.rbac.authorization.k8s.io/ingress-nginx created`\
+`clusterrole.rbac.authorization.k8s.io/ingress-nginx-admission created`\
+`rolebinding.rbac.authorization.k8s.io/ingress-nginx created`\
 `rolebinding.rbac.authorization.k8s.io/ingress-nginx-admission created`\
+`clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx created`\
+`clusterrolebinding.rbac.authorization.k8s.io/ingress-nginx-admission created`\
+`configmap/ingress-nginx-controller created`\
+`service/ingress-nginx-controller created`\
+`service/ingress-nginx-controller-admission created`\
+`deployment.apps/ingress-nginx-controller created`\
 `job.batch/ingress-nginx-admission-create created`\
-`job.batch/ingress-nginx-admission-patch created`
+`job.batch/ingress-nginx-admission-patch created`\
+`ingressclass.networking.k8s.io/nginx created`\
+`validatingwebhookconfiguration.admissionregistration.k8s.io/ingress-nginx-admission created`
 
 We should be able to watch our Deployment come online and show Ready at this point:
 
@@ -207,7 +207,7 @@ We can remove these similarly to how we deployed them all.
 ```sh
 oc delete -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/main/04-agnostic-ingress.yml
 oc delete -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/main/03-nginx-ingress.yml
-oc delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/aws/deploy.yaml --wait=false
+oc delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/aws/deploy.yaml --wait=false
 oc delete -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/main/02-nginx-ingress-scc.yml --wait=false
 oc delete -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/main/01-route.yml
 oc delete -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/main/00-demo-application.yml
@@ -217,27 +217,27 @@ oc delete -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/
 `ingress.networking.k8s.io "hello-world" deleted`\
 `namespace "ingress-nginx" deleted`\
 `serviceaccount "ingress-nginx" deleted`\
-`configmap "ingress-nginx-controller" deleted`\
-`clusterrole.rbac.authorization.k8s.io "ingress-nginx" deleted`\
-`clusterrolebinding.rbac.authorization.k8s.io "ingress-nginx" deleted`\
-`role.rbac.authorization.k8s.io "ingress-nginx" deleted`\
-`rolebinding.rbac.authorization.k8s.io "ingress-nginx" deleted`\
-`service "ingress-nginx-controller-admission" deleted`\
-`service "ingress-nginx-controller" deleted`\
-`deployment.apps "ingress-nginx-controller" deleted`\
-`ingressclass.networking.k8s.io "nginx" deleted`\
-`validatingwebhookconfiguration.admissionregistration.k8s.io "ingress-nginx-admission" deleted`\
 `serviceaccount "ingress-nginx-admission" deleted`\
-`clusterrole.rbac.authorization.k8s.io "ingress-nginx-admission" deleted`\
-`clusterrolebinding.rbac.authorization.k8s.io "ingress-nginx-admission" deleted`\
+`role.rbac.authorization.k8s.io "ingress-nginx" deleted`\
 `role.rbac.authorization.k8s.io "ingress-nginx-admission" deleted`\
+`clusterrole.rbac.authorization.k8s.io "ingress-nginx" deleted`\
+`clusterrole.rbac.authorization.k8s.io "ingress-nginx-admission" deleted`\
+`rolebinding.rbac.authorization.k8s.io "ingress-nginx" deleted`\
 `rolebinding.rbac.authorization.k8s.io "ingress-nginx-admission" deleted`\
+`clusterrolebinding.rbac.authorization.k8s.io "ingress-nginx" deleted`\
+`clusterrolebinding.rbac.authorization.k8s.io "ingress-nginx-admission" deleted`\
+`configmap "ingress-nginx-controller" deleted`\
+`service "ingress-nginx-controller" deleted`\
+`service "ingress-nginx-controller-admission" deleted`\
+`deployment.apps "ingress-nginx-controller" deleted`\
 `job.batch "ingress-nginx-admission-create" deleted`\
 `job.batch "ingress-nginx-admission-patch" deleted`\
+`ingressclass.networking.k8s.io "nginx" deleted`\
+`validatingwebhookconfiguration.admissionregistration.k8s.io "ingress-nginx-admission" deleted`\
 `namespace "ingress-nginx" deleted`\
 `securitycontextconstraints.security.openshift.io "nginx" deleted`\
-`Error from server (NotFound): error when deleting "https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/main/02-nginx-ingress-scc.yml": roles.rbac.authorization.k8s.io "ingress-nginx-scc" not found`\
-`Error from server (NotFound): error when deleting "https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/main/02-nginx-ingress-scc.yml": rolebindings.rbac.authorization.k8s.io "ingress-nginx-scc" not found`\
+`role.rbac.authorization.k8s.io "ingress-nginx-scc" deleted`\
+`rolebinding.rbac.authorization.k8s.io "ingress-nginx-scc" deleted`\
 `route.route.openshift.io "hello-world" deleted`\
 `namespace "helloworld" deleted`\
 `deployment.apps "hello-world" deleted`\
@@ -245,4 +245,4 @@ oc delete -f https://raw.githubusercontent.com/RedHatGov/ingress-route-examples/
 
 ## Further Reading
 
-Please see the [OpenShift Documentation](https://docs.openshift.com/container-platform/4.9/networking/configuring_ingress_cluster_traffic/overview-traffic.html) for more information on working with the provided IngressController for OpenShift, the OpenShift Router. If you have more questions about using external IngressControllers on OpenShift, see [this blog post](https://www.redhat.com/en/blog/using-nginx-ingress-controller-red-hat-openshift) as an example of using Nginx.
+Please see the [OpenShift Documentation](https://docs.openshift.com/container-platform/4.12/networking/configuring_ingress_cluster_traffic/overview-traffic.html) for more information on working with the provided IngressController for OpenShift, the OpenShift Router. If you have more questions about using external IngressControllers on OpenShift, see [this blog post](https://www.redhat.com/en/blog/using-nginx-ingress-controller-red-hat-openshift) as an example of using Nginx.
